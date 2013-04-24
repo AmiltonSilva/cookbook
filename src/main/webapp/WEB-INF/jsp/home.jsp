@@ -5,9 +5,21 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Homepage</title>
 </head>
-<body>
-	Funciona! Esta página foi processado em ${currentTime}
-        <br/>
-        Lito
+<body bgcolor = "white">
+    <font color=" red ">
+        
+    </font>
+       
+         <a href="/recipes"> Criar Receitas</a>
+        <br>
+        <a href="/recipes"> Listar Receitas</a>
+        <br>        
+         <a href="/recipes"> Editar Receitas</a>
+         <br>
+        <a href="/recipes"> Apagar Receitas</a>
+        <br>
+
+     
+             
 </body>
 </html>
