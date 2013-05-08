@@ -10,15 +10,9 @@
         
     </font>
        
-         <a href="/recipes"> Criar Receitas</a>
+         <a href="/recipes">Listar Receitas </a>
         <br>
-        <a href="/recipes"> Listar Receitas</a>
-        <br>        
-         <a href="/recipes"> Editar Receitas</a>
-         <br>
-        <a href="/recipes"> Apagar Receitas</a>
-        <br>
-
+        <a href ="/recipes/create">Criar Nova receita</a>   
      
              
 </body>
