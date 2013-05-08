@@ -2,7 +2,7 @@
 - a20082802 Justin Sanches
 - a20087674 Amilton Silva
 - a21103810 Alcides Lima
-- 123456 David Martinho
+- a21106091 Romina Costa
 
 ## Changelog
 #### Versão 1.0:
