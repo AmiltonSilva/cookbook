@@ -1,5 +1,5 @@
 # Grupo
-- a20082802 Justin Sanches
+- a20085764 David Sebastião
 - a20087674 Amilton Silva
 - a21103810 Alcides Lima
 - a21106091 Romina Costa
