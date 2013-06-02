@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 
@@ -30,3 +31,11 @@
 		</table>
 	</form>
 </body>
+=======
+<form method="POST" action="/recipes">
+Titulo: <input type="text" name="titulo"/><br/>
+Problema: <input type="text" name="problema"><br/>
+Solucao: <input type="text"/ name="solucao"><br/>
+<input type="submit" value="Criar Nova Receita"/>
+</form>
+>>>>>>> ee6ad70d95722bd75588b9ee9701fd2517b6c41a

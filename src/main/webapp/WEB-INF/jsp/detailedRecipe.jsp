@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
 <title>Recipe ${recipe.externalId}</title>
 </head>
 		<body>
@@ -31,4 +32,16 @@
 				onclick="location.href='/'"
 				value="Voltar"></td>
 		</body>
+=======
+<title>Recipe ${recipe.id}</title>
+</head>
+<body>
+	<h1>${recipe.titulo}</h1>
+	<b>Problema:</b>
+	<p>${recipe.problema}</p>
+	<b>Solucao:</b>
+	<p>${recipe.solucao}</p>
+
+</body>
+>>>>>>> ee6ad70d95722bd75588b9ee9701fd2517b6c41a
 </html>

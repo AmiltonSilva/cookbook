@@ -2,9 +2,12 @@ package pt.ulht.es.cookbook.controller;
 
 import java.util.Collection;
 import java.util.Map;
+<<<<<<< HEAD
 import java.util.Set;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+=======
+>>>>>>> ee6ad70d95722bd75588b9ee9701fd2517b6c41a
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+<<<<<<< HEAD
 import pt.ist.fenixframework.pstm.AbstractDomainObject;
 import pt.ulht.es.cookbook.domain.CookbookManager;
 import pt.ulht.es.cookbook.domain.Recipe;
@@ -120,4 +124,52 @@ public class RecipeController {
 	}
 	
 
+=======
+import pt.ulht.es.cookbook.domain.CookbookManager;
+import pt.ulht.es.cookbook.domain.Recipe;
+
+@Controller
+public class RecipeController {
+  
+    @RequestMapping(method=RequestMethod.GET, value="/recipes")
+    public String listRecipes(Model model) {
+    	Collection<Recipe> recipes = CookbookManager.getRecipes();
+    	model.addAttribute("recipes", recipes);
+    	return "listRecipes";
+    }
+    
+    @RequestMapping(method=RequestMethod.GET, value="recipes/create")
+    public String showRecepieCreationForm(){
+    	return "createRecipe";
+    }
+    
+    
+    @RequestMapping(method=RequestMethod.POST, value="recipes")
+    public String createRecipe(@RequestParam Map<String, String> params){
+    	String titulo = params.get("titulo");
+    	String problema = params.get("problema");
+    	String solucao = params.get("solucao");
+    	
+    	Recipe recipe = new Recipe(titulo, problema, solucao);
+    	CookbookManager.saveRecipe(recipe);
+    	
+    	return "redirect:/recipes/"+recipe.getId();
+    }
+    
+    @RequestMapping(method=RequestMethod.GET, value="/recipes/{id}")
+    public String showRecipe(Model model, @PathVariable String id) {
+    	Recipe recipe = CookbookManager.getRecipe(id);
+    	if(recipe != null){
+    		model.addAttribute("recipe", recipe);
+    	return "detailedRecipe";
+    }
+    	else{
+    		return "recipeNotFound";
+    		
+    	}
+    	
+    }       
+    
+    
+>>>>>>> ee6ad70d95722bd75588b9ee9701fd2517b6c41a
 }

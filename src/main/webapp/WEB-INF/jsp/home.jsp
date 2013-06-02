@@ -12,6 +12,7 @@
    		 <a href="/recipes">Listar Receitas </a><br>
 	     <a href ="/recipes/create">Criar Nova receita</a>   
         
+<<<<<<< HEAD
         
 <div class="Container-fuild">
 	<div class="row-fluid">
@@ -20,4 +21,14 @@
 				<h3>CookbookManager</h3>
 	        <p>
     </body>
+=======
+    </font>
+       
+         <a href="/recipes">Listar Receitas </a>
+        <br>
+        <a href ="/recipes/create">Criar Nova receita</a>   
+     
+             
+</body>
+>>>>>>> ee6ad70d95722bd75588b9ee9701fd2517b6c41a
 </html>
