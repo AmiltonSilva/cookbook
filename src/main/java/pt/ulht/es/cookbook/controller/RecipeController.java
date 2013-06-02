@@ -1,42 +1,123 @@
 package pt.ulht.es.cookbook.controller;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import pt.ist.fenixframework.pstm.AbstractDomainObject;
+import pt.ulht.es.cookbook.domain.CookbookManager;
+import pt.ulht.es.cookbook.domain.Recipe;
+
+import java.util.Date;
 
 @Controller
 public class RecipeController {
-  
-    @RequestMapping(method=RequestMethod.GET, value="/recipes")
-    public String listRecipes(Model model) {
+		
+		@RequestMapping(method = RequestMethod.GET, value = "/recipes")
+		public String listRrecipes(Model model) {
+			Collection<Recipe> recipes = CookbookManager.getInstance().getRecipeSet();
+			if (recipes.isEmpty()) {
+				return "recipeNotFound";
+			} else {
+				model.addAttribute("recipes", recipes);
+				return "listRecipes";
+			}
 
-        List<String> values = new ArrayList<String>();
-        values.add("Ola");
-        values.add("Mundo");        
-        model.addAttribute("items", values);
-        
-        return "listRecipes";
-    }
-    
-    @RequestMapping(method=RequestMethod.GET, value="/recipes/{id}")
-    public String showRecipe(Model model, @PathVariable String id) {
-
-        List<String> values = new ArrayList<String>();
-        values.add("Ola"+id);
-        values.add("Mundo"+id);        
-        model.addAttribute("items", values);
-        if(id.equals("42")) {
-        	return "detailedRecipe";
-		} else {
-			return "recipeNotFound";
 		}
-    }
-        
-    
-    
+
+		
+
+
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/create")
+	public String showRecipeCreationForm() {
+
+		return "createRecipe";
+	}
+	
+
+	@RequestMapping(method = RequestMethod.POST, value = "/recipes")
+	public String createRecipe(@RequestParam Map<String, String> params) {
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+
+		String titulo = params.get("titulo");
+		String problema = params.get("problema");
+		String solucao = params.get("solucao");
+		String autor = params.get("autor");
+
+		String[] dataHora = dateFormat.format(date).split(" ");
+		String hora = dataHora[0];
+		String data = dataHora[1];
+
+		Recipe recipe = new Recipe(titulo, problema, solucao, autor);
+		
+		return "redirect:/recipes/" + recipe.getExternalId();
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/{id}")
+	public String showRecipe(Model model, @PathVariable String id) {
+
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+		if (recipe != null) {
+			model.addAttribute("recipe", recipe);
+			return "detailedRecipe";
+		} else
+			return "recipeNotFound";
+
+	}
+
+	
+	// Recebe a receita e altera na posicao da lista
+	@RequestMapping(method = RequestMethod.GET, value = "/recipes/edit/{id}")
+	public String showRecipeEditForm(Model model, @PathVariable String id) {
+
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+
+		model.addAttribute("recipe", recipe);
+
+		return "editRecipe";
+	}
+
+	@RequestMapping(method = RequestMethod.POST, value = "/recipes/edit/editRecipe")
+	public String editRecipe(@RequestParam Map<String, String> params) {
+
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+
+		String titulo = params.get("titulo");
+		String problema = params.get("problema");
+		String solucao = params.get("solucao");
+		String autor = params.get("autor");
+
+		String[] dataHora = dateFormat.format(date).split(" ");
+		String hora = dataHora[0];
+		String data = dataHora[1];
+
+		Recipe recipe = new Recipe(titulo, problema, solucao, autor);
+		//CookbookManager.editRecipe(recipe);
+		return "redirect:/recipes/";
+	}
+
+	@RequestMapping(method = RequestMethod.GET, value = "recipes/deleteRecipe/{id}")
+	public String deleteRecipe(Model model, @PathVariable("id") String id) {
+
+		Recipe recipe = AbstractDomainObject.fromExternalId(id);
+
+		recipe.delete();
+		//CookbookManager.getInstance().removeRecipe(recipe);
+
+		return "redirect:/recipes";
+	}
+	
+
 }
