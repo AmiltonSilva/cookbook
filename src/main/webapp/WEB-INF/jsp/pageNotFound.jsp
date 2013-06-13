@@ -5,6 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<<<<<<< HEAD
 
 		<title>Not Found</title>
 	</head>
@@ -15,4 +16,12 @@
 	 			<td><input type="button" onclick="location.href='/'" value="Voltar"></td>
 			</tr>
 		</body>
+=======
+			<title>Not Found</title>
+	</head>
+
+	<body>
+    		Esta não é a página que você está procurando...
+	</body>
+>>>>>>> c933cefd3a1292870bfca0aa3e6186b9c19a27c0
 </html>

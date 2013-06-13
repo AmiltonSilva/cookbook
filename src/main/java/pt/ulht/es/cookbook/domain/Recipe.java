@@ -1,15 +1,25 @@
 package pt.ulht.es.cookbook.domain;
 
+<<<<<<< HEAD
 import org.joda.time.DateTime;
 
 public class Recipe extends Recipe_Base implements Comparable<Recipe> {
     					//Metodo Criar Receita
     public Recipe(String titulo, String problema, String solucao, String autor, String etiqueta) {
     	
+=======
+<<<<<<< HEAD
+import org.joda.time.DateTime;
+
+public class Recipe extends Recipe_Base {
+    
+    public  Recipe(String titulo, String problema, String solucao, String autor) {
+>>>>>>> c933cefd3a1292870bfca0aa3e6186b9c19a27c0
         setTitulo(titulo);
         setProblema(problema);
         setAutor(autor);
         setSolucao(solucao);
+<<<<<<< HEAD
         setEtiqueta(etiqueta);
         setCreationTimestamp(new DateTime());
         setCookbookManager(CookbookManager.getInstance());
@@ -51,4 +61,53 @@ public class Recipe extends Recipe_Base implements Comparable<Recipe> {
 		return false;
 	}
     
+=======
+        setCreationTimestamp(new DateTime());
+        setCookbookManager(CookbookManager.getInstance());
+    }
+
+	public void delete() {
+		setCookbookManager(null);
+		super.deleteDomainObject();
+		
+	}
+    
+=======
+public class Recipe {
+	
+	private String id;
+	
+	private String titulo;
+	private String problema;
+	private String solucao;
+	
+	
+	public Recipe(String titulo, String problema, String solucao) {
+		this.titulo = titulo;
+		this.problema = problema;
+		this.solucao = solucao;
+		
+	}
+	
+	public String getTitulo(){
+		return titulo;
+	}
+	public String getProblema(){
+		return problema;
+	}
+	public String getSolucao(){
+		return solucao;
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;		
+	}
+
+
+>>>>>>> ee6ad70d95722bd75588b9ee9701fd2517b6c41a
+>>>>>>> c933cefd3a1292870bfca0aa3e6186b9c19a27c0
 }

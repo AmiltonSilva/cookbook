@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 
 //Permite Escrever as Classe que o nosso dominio e as relacoes que Existe entre elas;
 
 
+=======
+>>>>>>> c933cefd3a1292870bfca0aa3e6186b9c19a27c0
 package pt.ulht.es.cookbook.domain;
 
 	class CookbookManager;
@@ -11,17 +14,27 @@ package pt.ulht.es.cookbook.domain;
 			String problema;
 			String solucao;
 			String autor;
+<<<<<<< HEAD
 			String etiqueta;
 			
 			DateTime creationTimestamp;
 	}
 	
 	/*Relaciona a Clase CookbookManager e a clase Recipe;*/
+=======
+			DateTime creationTimestamp;
+	}
+	
+>>>>>>> c933cefd3a1292870bfca0aa3e6186b9c19a27c0
 	
 	relation CookbookManagerHasRecipes{
 		CookbookManager playsRole cookbookManager { multiplicity 1..1; }
 		Recipe playsRole recipe{ multiplicity 0..*; }
+<<<<<<< HEAD
 	}
 	
 	/* 1 CookbookManager pode ter varias receitas e uma receita tem que ter uma referencia para o CookbookManager*/
 	
+=======
+	}
+>>>>>>> c933cefd3a1292870bfca0aa3e6186b9c19a27c0
